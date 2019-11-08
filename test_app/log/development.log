@@ -500,3 +500,138 @@ Processing by WelcomeController#about as HTML
 Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 4520)
 
 
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20191108100636)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191108100636"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-11-08 10:31:55.936745"], ["updated_at", "2019-11-08 10:31:55.936745"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/hopkinc4/.rvm/gems/ruby-2.5.3/bin/rake:23)
+Started GET "/" for ::1 at 2019-11-08 10:34:15 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/hopkinc4/.rvm/gems/ruby-2.5.3/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/hopkinc4/.rvm/gems/ruby-2.5.3/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 22.5ms | Allocations: 470)
+Completed 200 OK in 71ms (Views: 48.9ms | ActiveRecord: 0.0ms | Allocations: 2829)
+
+
+Started GET "/articles" for ::1 at 2019-11-08 10:34:22 +0000
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:15
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1354)
+Completed 200 OK in 1050ms (Views: 1047.0ms | ActiveRecord: 0.3ms | Allocations: 1545583)
+
+
+Started GET "/articles/new" for ::1 at 2019-11-08 10:34:26 +0000
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 93.7ms | Allocations: 5337)
+  Rendered articles/new.html.erb within layouts/application (Duration: 94.6ms | Allocations: 5713)
+Completed 200 OK in 114ms (Views: 108.0ms | ActiveRecord: 0.3ms | Allocations: 15520)
+
+
+Started POST "/articles" for ::1 at 2019-11-08 10:34:27 +0000
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"UoKgrqHKG+OOyhhz88gt9Rr8U7PAQPap+hkV4jVIBymdtqWZ38iXAAN9Ab1iIUNCTG5T0i/iUvPzi4WmFxwAqw==", "article"=>{"title"=>"", "description"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", ""], ["description", ""], ["created_at", "2019-11-08 10:34:27.846209"], ["updated_at", "2019-11-08 10:34:27.846209"]]
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms | Allocations: 2903)
+
+
+Started GET "/articles/1" for ::1 at 2019-11-08 10:34:27 +0000
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 284)
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 7927)
+
+
+Started GET "/articles/1/edit" for ::1 at 2019-11-08 10:34:30 +0000
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.6ms | Allocations: 812)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1084)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.1ms | Allocations: 7988)
+
+
+Started PATCH "/articles/1" for ::1 at 2019-11-08 10:34:34 +0000
+Processing by ArticlesController#update as HTML
+  Parameters: {"authenticity_token"=>"ebAU7ucEmtd3fjO40ZUKBE44p8rf2IO+zRS0yyLg03r0T7c2xSDG6Hj7T3Pr4OU5XUeoKHeiTZIwROq6chTx3Q==", "article"=>{"title"=>"gfnhg", "description"=>"hgnhn"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:44:in `block in update'
+  [1m[36mArticle Update (0.4ms)[0m  [1m[33mUPDATE "articles" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["title", "gfnhg"], ["description", "hgnhn"], ["updated_at", "2019-11-08 10:34:34.167522"], ["id", 1]]
+  ↳ app/controllers/articles_controller.rb:44:in `block in update'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 6ms (ActiveRecord: 1.3ms | Allocations: 3328)
+
+
+Started GET "/articles/1" for ::1 at 2019-11-08 10:34:34 +0000
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 98)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.1ms | Allocations: 6854)
+
+
+Started GET "/articles" for ::1 at 2019-11-08 10:34:35 +0000
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:15
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 760)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.1ms | Allocations: 7007)
+
+
+Started DELETE "/articles/1" for ::1 at 2019-11-08 10:34:38 +0000
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"m8gFu3J/XStxVwvOQT4Zkjp0vLqpsq6nIORJwI7oD8FHKfEUjeb362pxMb7TtHjqT40EvcGmt6wzqgfhVTL32g==", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:67:in `set_article'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:57:in `destroy'
+  [1m[36mArticle Destroy (0.3ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/articles_controller.rb:57:in `destroy'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms | Allocations: 2722)
+
+
+Started GET "/articles" for ::1 at 2019-11-08 10:34:38 +0000
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:15
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 629)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.2ms | Allocations: 6875)
+
+
